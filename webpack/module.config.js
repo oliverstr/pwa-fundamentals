@@ -2,7 +2,7 @@
 
 const extractSass = require('./extract-sass');
 
-module.exports = function() {
+module.exports = function () {
   return {
     rules: [
       {
@@ -29,6 +29,19 @@ module.exports = function() {
             loader: 'sass-loader',
             options: {
               includePaths: ['node_modules/muicss/lib/sass']
+            }
+          }
+        ]
+      },
+      {
+        type: 'javascript/auto',
+        test: /\.json/,
+        exclude: /(node_modules|bower_components)/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: "[name].[ext]"
             }
           }
         ]
